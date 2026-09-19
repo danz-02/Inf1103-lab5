@@ -1,5 +1,6 @@
 ##Set inventory to '0'
 inventory=0
+failed_entries=0
 
 def get_valid_input():
     user_input= input("Enter a stock quantity: ")
@@ -14,19 +15,9 @@ def get_valid_input():
         
     else:
         print("Invaild input.. Please try again or 'quit'")
-        return get_valid_input()
-        
+        return "Invaild"
 
-def process_delivery():
-   stock_count = get_valid_input()
-   new_total= inventory+ stock_count
+def process_delivery(current_total, new_value):
+   new_total= current_total+ new_value
    print(f"New Total Delivery: {new_total} ")
-
-
-#def calculate_tax(amount)
-
-
-
-
-#print("\n Final Inventory Report")
-#print(f"Total Units Processed (Final Stock): {inventory}")
+   return new_total
