@@ -21,3 +21,8 @@ def process_delivery(current_total, new_value):
    new_total= current_total+ new_value
    print(f"New Total Delivery: {new_total} ")
    return new_total
+
+def calculate_tax(amount):
+    tax_amount= amount*0.10
+    print(f"Tax amount {tax_amount}")
+    return tax_amount
