@@ -26,3 +26,7 @@ def calculate_tax(amount):
     tax_amount= amount*0.10
     print(f"Tax amount {tax_amount}")
     return tax_amount
+
+def generate_report(total_units, failed_attempts):
+    print(f"Total Units Processed (Final Stock): {total_units}")
+    print(f"Total number of failed attempt: {failed_attempts}")
