@@ -50,3 +50,48 @@ def get_next_id(orders):
     ##Initialise "1001" as the start order ID as shown from the lab
 
     return max(order[0] for order in orders) + 1
+
+orders=load_inventory()
+print("Current Orders:\n")
+
+
+if not orders:
+    print("No current orders.. Creating a new file")
+else:
+    for o in orders:
+        print(f"{o[0]}, {o[1]}, {o[2]}")
+
+        
+while True:
+
+    ##Prompt user to enter a product
+    product_name= input("Enter a product: ")
+    ##When user enter 'quit' programme will save the records
+    if product_name =="quit":
+        save_inventory(orders)
+        print("Current Orders")
+    else:
+         for o in orders:
+                print(f"{o[0]}, {o[1]}, {o[2]}")
+
+    ##Prompt user to a vaild product quantity value, else program exit
+    qty ="Invalid"
+    while qty =="Invalid":
+        qty= get_valid_input()
+        if qty is None:
+            save_inventory(orders)
+            sys.exit()
+
+    ##Incrementing order id and save 'order' into the list
+    new_id = get_next_id(orders)
+
+    new_order = [new_id, product_name, qty] 
+    orders.append(new_order)
+
+    ##Add new order into the list
+    save_inventory(new_order) 
+
+    ##Print statement whenever an item is added 
+    print("New Order Added:")
+    print(f"{new_order[0]}, {new_order[1]}, {new_order[2]}")
+    print("Order successfully saved to orders.txt")
