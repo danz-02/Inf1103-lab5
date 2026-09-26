@@ -36,3 +36,17 @@ def load_inventory():
         f=open("order10.txt", "w")
         f.close()
     return orders
+
+def save_inventory(new_input):
+    ##Append new transactions to "orders.txt, using "a" mode
+    f=open("orders.txt", "a")
+    f.write(f"{new_input[0]},{new_input[1]},{new_input[2]}\n ")
+    f.close()
+
+def get_next_id(orders):
+    ##For the next increment order ID
+    if len(orders) == 0:
+        return 1001
+    ##Initialise "1001" as the start order ID as shown from the lab
+
+    return max(order[0] for order in orders) + 1
